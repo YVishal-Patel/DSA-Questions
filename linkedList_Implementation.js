@@ -99,6 +99,23 @@ class Node {
       }
     }
   
+    search(element) {
+      if (this.isEmpty()) {
+        console.log("list is empty.");
+      } else if (this.head.element === element) {
+        return true;
+      } else {
+        let prev = this.head;
+        while (prev.next && prev.next.element !== element) {
+          prev = prev.next;
+        }
+        if (prev.next) {
+          prev.next.element = element;
+          return true;
+        }
+        return false;
+      }
+    }
   
     print() {
       if (this.isEmpty()) {
@@ -122,6 +139,7 @@ class Node {
   linked.append(10);
   linked.insert(100, 1);
   console.log(linked.removedByValue(10));
+  console.log(linked.search(30));
   // linked.removed(4);
   linked.print();
   
